@@ -1,0 +1,16 @@
+PODS:
+  - ThinkingDataCore (0.1.0)
+
+DEPENDENCIES:
+  - ThinkingDataCore (from `../`)
+
+EXTERNAL SOURCES:
+  ThinkingDataCore:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  ThinkingDataCore: 6a65a9efc793847d9e578eb1e7c9740fdf986177
+
+PODFILE CHECKSUM: 3ea421bf7334a8d09b86d4645a897f9e915dca62
+
+COCOAPODS: 1.12.1
