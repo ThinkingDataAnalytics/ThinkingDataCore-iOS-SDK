@@ -3,7 +3,7 @@ use_frameworks!
 platform :ios, '10.0'
 
 target 'ThinkingDataCore_Example' do
-  pod 'ThinkingDataCore', :path => '../'
+  pod 'ThinkingDataCore', :path => '../../'
 
   target 'ThinkingDataCore_Tests' do
     inherit! :search_paths

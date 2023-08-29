@@ -30,14 +30,25 @@ TODO: Add long description of the pod here.
   s.requires_arc     = true
 
   s.ios.deployment_target = '9.0'
-
-  s.source_files = 'ThinkingDataCore/Classes/**/*'
+  s.osx.deployment_target = '10.11'
   
-  # s.resource_bundles = {
-  #   'ThinkingDataCore' => ['ThinkingDataCore/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.default_subspec = 'Main'
+  
+  s.subspec 'iOS' do |i|
+    i.ios.deployment_target = '9.0'
+    i.source_files = 'ThinkingDataCore/Classes/**/*'
+  end
+  
+  s.subspec 'OSX' do |o|
+    o.osx.deployment_target = '10.11'
+    path = 'ThinkingDataCore/Classes'
+    o.source_files = path + '/**/*'
+    o.exclude_files = path + '/Router/**/*'
+  end
+  
+  s.subspec 'Main' do |m|
+    m.ios.dependency 'ThinkingDataCore/iOS'
+    m.osx.dependency 'ThinkingDataCore/OSX'
+  end
+  
 end

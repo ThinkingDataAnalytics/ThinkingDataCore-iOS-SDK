@@ -1,0 +1,21 @@
+PODS:
+  - ThinkingDataCore (1.0.0):
+    - ThinkingDataCore/Main (= 1.0.0)
+  - ThinkingDataCore/iOS (1.0.0)
+  - ThinkingDataCore/Main (1.0.0):
+    - ThinkingDataCore/iOS
+    - ThinkingDataCore/OSX
+
+DEPENDENCIES:
+  - ThinkingDataCore (from `../../`)
+
+EXTERNAL SOURCES:
+  ThinkingDataCore:
+    :path: "../../"
+
+SPEC CHECKSUMS:
+  ThinkingDataCore: 69c0f90622e2031a36d6a0b44a9ef0e0ad10a986
+
+PODFILE CHECKSUM: 67a3207ff516f6650981c7bec7032ebe53323d4b
+
+COCOAPODS: 1.12.1
