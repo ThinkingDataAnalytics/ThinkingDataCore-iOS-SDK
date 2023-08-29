@@ -6,22 +6,13 @@
 //
 
 
-#if TARGET_OS_IOS
-#import <UIKit/UIKit.h>
-#else
-#import <AppKit/AppKit.h>
-#endif
+#import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TAContext : NSObject
 
-#if TARGET_OS_IOS
-@property(nonatomic, strong) UIApplication *application;
-#else
-@property(nonatomic, strong) NSApplication *application;
-#endif
-
+@property(nonatomic, strong) id application;
 
 @property(nonatomic, strong) NSDictionary *launchOptions;
 
