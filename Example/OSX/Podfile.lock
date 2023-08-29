@@ -14,7 +14,7 @@ EXTERNAL SOURCES:
     :path: "../../"
 
 SPEC CHECKSUMS:
-  ThinkingDataCore: 69c0f90622e2031a36d6a0b44a9ef0e0ad10a986
+  ThinkingDataCore: bbddbbb34d9fcee5ba6d92886a11c91f2f25cdfa
 
 PODFILE CHECKSUM: 5312b7c2ec0ecaebd843ea9071feadd2145026a6
 

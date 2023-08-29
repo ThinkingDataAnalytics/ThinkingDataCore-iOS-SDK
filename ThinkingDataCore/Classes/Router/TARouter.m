@@ -371,31 +371,17 @@ static NSString *TARURLGlobalScheme = nil;
     if (!URL) {
         return nil;
     }
-    if ([UIDevice currentDevice].systemVersion.floatValue < 8) {
-        NSMutableDictionary *dic = @{}.mutableCopy;
-        NSString *query = URL.query;
-        NSArray<NSString *> *queryStrs = [query componentsSeparatedByString:@"&"];
-        [queryStrs enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            NSArray *keyValue = [obj componentsSeparatedByString:@"="];
-            if (keyValue.count >= 2) {
-                NSString *key = keyValue[0];
-                NSString *value = keyValue[1];
-                [dic setObject:value forKey:key];
-            }
-        }];
-        return dic;
-    } else {
-        NSURLComponents *URLComponents = [NSURLComponents componentsWithURL:URL
-                                                    resolvingAgainstBaseURL:NO];
-        NSArray *queryItems = URLComponents.queryItems;
-        NSMutableDictionary *dic = @{}.mutableCopy;
-        for (NSURLQueryItem *item in queryItems) {
-            if (item.name && item.value) {
-                [dic setObject:item.value forKey:item.name];
-            }
+  
+    NSURLComponents *URLComponents = [NSURLComponents componentsWithURL:URL
+                                                resolvingAgainstBaseURL:NO];
+    NSArray *queryItems = URLComponents.queryItems;
+    NSMutableDictionary *dic = @{}.mutableCopy;
+    for (NSURLQueryItem *item in queryItems) {
+        if (item.name && item.value) {
+            [dic setObject:item.value forKey:item.name];
         }
-        return dic;
     }
+    return dic;
 }
 
 + (NSDictionary<NSString *, NSDictionary<NSString *, id> *> *)paramsFromJson:(NSString *)json

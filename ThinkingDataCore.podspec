@@ -36,14 +36,14 @@ TODO: Add long description of the pod here.
   
   s.subspec 'iOS' do |i|
     i.ios.deployment_target = '9.0'
-    i.source_files = 'ThinkingDataCore/Classes/**/*'
+    path = 'ThinkingDataCore/Classes'
+    i.source_files = path + '/**/*'
   end
   
   s.subspec 'OSX' do |o|
     o.osx.deployment_target = '10.11'
     path = 'ThinkingDataCore/Classes'
     o.source_files = path + '/**/*'
-    o.exclude_files = path + '/Router/**/*'
   end
   
   s.subspec 'Main' do |m|
