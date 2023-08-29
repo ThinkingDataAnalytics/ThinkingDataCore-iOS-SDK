@@ -1,12 +1,11 @@
 #import "NSData+TDGzip.h"
 #import "zlib.h"
-#import "TDLogging.h"
 
 @implementation NSData (TDGzip)
 
 + (NSData *)td_gzipData:(NSData *)dataa {
     if (!dataa || [dataa length] == 0) {
-        TDLogDebug(@"gzip error, return nil ");
+        NSLog(@"[ThinkingData] gzip error, return nil ");
         return nil;
     }
     
