@@ -70,7 +70,6 @@ NSArray<NSString *>* _TAReadConfiguration(char *sectionName,const struct mach_he
         NSString *str = [NSString stringWithUTF8String:string];
         if(!str)continue;
         
-        NSLog(@"config = %@", str);
         if(str) [configs addObject:str];
     }
     
