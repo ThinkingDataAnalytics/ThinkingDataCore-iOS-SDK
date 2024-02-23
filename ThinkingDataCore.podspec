@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ThinkingDataCore'
-  s.version          = '1.0.1'
+  s.version          = '1.0.2'
   s.summary          = 'A short description of ThinkingDataCore.'
 
 # This description is used to generate tags and improve search results.
@@ -50,5 +50,7 @@ TODO: Add long description of the pod here.
     m.ios.dependency 'ThinkingDataCore/iOS'
     m.osx.dependency 'ThinkingDataCore/OSX'
   end
+
+  s.resource_bundles = {'ThinkingDataCore' => ['ThinkingDataCore/Resources/**/*']}
   
 end
