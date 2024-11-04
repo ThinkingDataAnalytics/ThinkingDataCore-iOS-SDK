@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ThinkingDataCore'
-  s.version          = '1.0.2'
+  s.version          = '1.1.0'
   s.summary          = 'A short description of ThinkingDataCore.'
 
 # This description is used to generate tags and improve search results.
@@ -38,12 +38,14 @@ TODO: Add long description of the pod here.
     i.ios.deployment_target = '9.0'
     path = 'ThinkingDataCore/Classes'
     i.source_files = path + '/**/*'
+    i.exclude_files = path + '/DeviceInfo/TDCoreDeviceInfo+OSX.{h,m}'
   end
   
   s.subspec 'OSX' do |o|
     o.osx.deployment_target = '10.11'
     path = 'ThinkingDataCore/Classes'
     o.source_files = path + '/**/*'
+    o.exclude_files = path + '/DeviceInfo/TDCoreDeviceInfo+iOS.{h,m}', path + '/DeviceInfo/TDCoreFPSMonitor.{h,m}', path + '/Network/TDNetworkReachability.{h,m}'
   end
   
   s.subspec 'Main' do |m|
