@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (nullable NSString *)tdRemoteConfigGetClientUserIdWithAccountId:(nullable NSString *)accountId distinctId:(nullable NSString *)distinctId appId:(nonnull NSString *)appId;
 
-- (nullable NSDictionary *)tdRemoteConfigGetDefaultValueWithAppId:(nonnull NSString *)appId;
+- (nullable NSDictionary *)tdRemoteConfigGetApplyValueWithAppId:(nonnull NSString *)appId templateCode:(nullable NSString *)code;
 
 - (nullable NSDictionary *)tdRemoteConfigGetSystemConfigWithAppId:(nonnull NSString *)appId;
 

@@ -15,13 +15,6 @@ typedef NS_ENUM(NSUInteger, TDSDKMode) {
     TDSDKModeDebugOnly,
 };
 
-@interface TDTemplate : NSObject
-@property (nonatomic, copy) NSString *templateCode;
-@property (nonatomic, strong) NSDictionary<NSString *, NSString *> *customFetchParams;
-
-@end
-
-
 @interface TDSettings : NSObject
 
 @property (nonatomic, copy) NSString *appId;
@@ -36,7 +29,7 @@ typedef NS_ENUM(NSUInteger, TDSDKMode) {
 @property (nonatomic, copy) NSString *encryptKey;
 @property (nonatomic, assign) BOOL enableAutoPush;
 @property (nonatomic, assign) BOOL enableAutoCalibrated;
-@property (nonatomic, strong) NSArray<TDTemplate *> *templates;
+@property (nonatomic, strong) NSDictionary<NSString *, NSObject *> *rccFetchParams;
 
 @end
 

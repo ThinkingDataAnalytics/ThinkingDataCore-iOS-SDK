@@ -176,3 +176,9 @@
 #else
 #import "TDCorePresetProperty.h"
 #endif
+
+#if __has_include(<ThinkingDataCore/TDCorePresetDisableConfig.h>)
+#import <ThinkingDataCore/TDCorePresetDisableConfig.h>
+#else
+#import "TDCorePresetDisableConfig.h"
+#endif

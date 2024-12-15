@@ -11,7 +11,7 @@ NSString * const kTDMediatorTargetRemoteConfig = @"RemoteConfig";
 
 NSString * const kTDMediatorTargetRemoteConfigActionNativeInit = @"nativeInitWithParams";
 NSString * const kTDMediatorTargetRemoteConfigActionNativeGetClientUserId = @"nativeGetClientUserIdWithParams";
-NSString * const kTDMediatorTargetRemoteConfigActionNativeGetDefaultValue = @"nativeGetDefaultValueWithParams";
+NSString * const kTDMediatorTargetRemoteConfigActionNativeGetApplyValue = @"nativeGetApplyValueWithParams";
 NSString * const kTDMediatorTargetRemoteConfigActionNativeGetSystemConfig = @"nativeGetSystemConfigWithParams";
 NSString * const kTDMediatorTargetRemoteConfigActionNativeIsSDKClose = @"nativeIsSDKCloseWithParams";
 
@@ -40,12 +40,15 @@ NSString * const kTDMediatorTargetRemoteConfigActionNativeIsSDKClose = @"nativeI
     return userId;
 }
 
-- (NSDictionary *)tdRemoteConfigGetDefaultValueWithAppId:(NSString *)appId {
+- (NSDictionary *)tdRemoteConfigGetApplyValueWithAppId:(NSString *)appId templateCode:(NSString *)code {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     if (appId.length) {
         params[@"appId"] = appId;
     }
-    NSDictionary *dict = [[TDMediator sharedInstance] performTarget:kTDMediatorTargetRemoteConfig action:kTDMediatorTargetRemoteConfigActionNativeGetDefaultValue params:params shouldCacheTarget:NO];
+    if (code.length) {
+        params[@"templateCode"] = code;
+    }
+    NSDictionary *dict = [[TDMediator sharedInstance] performTarget:kTDMediatorTargetRemoteConfig action:kTDMediatorTargetRemoteConfigActionNativeGetApplyValue params:params shouldCacheTarget:NO];
     return dict;
 }
 

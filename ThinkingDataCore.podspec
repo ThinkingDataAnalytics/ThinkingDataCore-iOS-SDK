@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ThinkingDataCore'
-  s.version          = '1.1.0'
+  s.version          = '1.2.0'
   s.summary          = 'A short description of ThinkingDataCore.'
 
 # This description is used to generate tags and improve search results.
@@ -29,28 +29,54 @@ TODO: Add long description of the pod here.
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
   s.requires_arc     = true
 
+  s.default_subspec = 'Main'
+
   s.ios.deployment_target = '9.0'
   s.osx.deployment_target = '10.11'
-  
-  s.default_subspec = 'Main'
+  s.watchos.deployment_target = "6.0"
+  s.tvos.deployment_target = "13.0"
+  s.visionos.deployment_target = "1.0"
   
   s.subspec 'iOS' do |i|
     i.ios.deployment_target = '9.0'
     path = 'ThinkingDataCore/Classes'
     i.source_files = path + '/**/*'
-    i.exclude_files = path + '/DeviceInfo/TDCoreDeviceInfo+OSX.{h,m}'
   end
   
   s.subspec 'OSX' do |o|
     o.osx.deployment_target = '10.11'
     path = 'ThinkingDataCore/Classes'
     o.source_files = path + '/**/*'
-    o.exclude_files = path + '/DeviceInfo/TDCoreDeviceInfo+iOS.{h,m}', path + '/DeviceInfo/TDCoreFPSMonitor.{h,m}', path + '/Network/TDNetworkReachability.{h,m}'
+    o.exclude_files = path + '/DeviceInfo/TDCoreFPSMonitor.{h,m}', path + '/Network/TDNetworkReachability.{h,m}'
+  end
+
+  s.subspec 'watchOS' do |o|
+    o.watchos.deployment_target = "6.0"
+    path = 'ThinkingDataCore/Classes'
+    o.source_files = path + '/**/*'
+    o.exclude_files = path + '/DeviceInfo/TDCoreFPSMonitor.{h,m}', path + '/Network/TDNetworkReachability.{h,m}'
+  end
+
+  s.subspec 'tvOS' do |o|
+    o.tvos.deployment_target = "13.0"
+    path = 'ThinkingDataCore/Classes'
+    o.source_files = path + '/**/*'
+    o.exclude_files = path + '/DeviceInfo/TDCoreFPSMonitor.{h,m}', path + '/Network/TDNetworkReachability.{h,m}'
+  end
+
+  s.subspec 'versionOS' do |o|
+    o.visionos.deployment_target = "1.0"
+    path = 'ThinkingDataCore/Classes'
+    o.source_files = path + '/**/*'
+    o.exclude_files = path + '/DeviceInfo/TDCoreFPSMonitor.{h,m}', path + '/Network/TDNetworkReachability.{h,m}'
   end
   
   s.subspec 'Main' do |m|
     m.ios.dependency 'ThinkingDataCore/iOS'
     m.osx.dependency 'ThinkingDataCore/OSX'
+    m.tvos.dependency 'ThinkingDataCore/tvOS'
+    m.watchos.dependency 'ThinkingDataCore/watchOS'
+    m.visionos.dependency 'ThinkingDataCore/versionOS'
   end
 
   s.resource_bundles = {'ThinkingDataCore' => ['ThinkingDataCore/Resources/**/*']}

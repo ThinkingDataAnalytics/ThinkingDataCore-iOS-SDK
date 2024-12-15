@@ -67,10 +67,11 @@
             dict[@"#manufacturer"] = value;
         }
     }
-#if TARGET_OS_IOS
     if (![TDCorePresetDisableConfig disableSimulator]) {
         dict[@"#simulator"] = [TDCoreDeviceInfo isSimulator] ? @(YES) : @(NO);
     }
+#if TARGET_OS_IOS
+    
     if (![TDCorePresetDisableConfig disableScreenWidth]) {
         NSNumber *value = [TDCoreDeviceInfo screenWidth];
         if (value) {

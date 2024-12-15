@@ -24,9 +24,9 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)osVersion;
 + (NSString *)deviceModel;
 + (NSString *)deviceType;
++ (BOOL)isSimulator;
 
 #if TARGET_OS_IOS
-+ (BOOL)isSimulator;
 + (NSNumber *)fps;
 + (NSNumber *)screenWidth;
 + (NSNumber *)screenHeight;

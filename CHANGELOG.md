@@ -1,3 +1,10 @@
+### v1.2.0
+**Date:** 2024/12/16
+
+**Notes:**
+
+* Modify initialization
+
 ### v1.1.0
 **Date:** 2024/11/04
 

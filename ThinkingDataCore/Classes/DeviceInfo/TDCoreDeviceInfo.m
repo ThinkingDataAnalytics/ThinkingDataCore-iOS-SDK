@@ -11,10 +11,17 @@
 #import "TDCoreKeychainHelper.h"
 #import <sys/utsname.h>
 
+#if TARGET_OS_WATCH
+#import <WatchKit/WatchKit.h>
+#endif
+
+#if TARGET_OS_IOS || TARGET_OS_VISION
+#import <UIKit/UIKit.h>
+#endif
+
 #if TARGET_OS_IOS
 #import "TDNetworkReachability.h"
 #import "TDCoreFPSMonitor.h"
-#import <UIKit/UIKit.h>
 #endif
 
 @implementation TDCoreDeviceInfo
@@ -59,6 +66,8 @@
 + (NSString *)bundleId {
     return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
 }
+
+#if (TARGET_OS_IOS || TARGET_OS_WATCH || TARGET_OS_VISION || TARGET_OS_TV)
 
 + (NSString *)deviceId {
     NSString *deviceId = nil;
@@ -109,6 +118,36 @@
     }
     return anonymityId;
 }
+
+#elif TARGET_OS_OSX
+
++ (NSString *)deviceId {
+    NSString *keyDeviceId = @"thinking_data_device_id";
+    NSString *deviceId = [[NSUserDefaults standardUserDefaults] stringForKey:keyDeviceId];
+    if (!deviceId) {
+        deviceId = [self getSystemSerialNumber];
+        if (deviceId == nil) {
+            deviceId = [[NSUUID UUID] UUIDString];
+        }
+        [[NSUserDefaults standardUserDefaults] setObject:deviceId forKey:keyDeviceId];
+    }
+    return deviceId;
+}
+
++ (nullable NSString *)getSystemSerialNumber {
+    io_service_t platformExpert = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching("IOPlatformExpertDevice"));
+    if (platformExpert) {
+        CFTypeRef serialNumberAsCFString = IORegistryEntryCreateCFProperty(platformExpert, CFSTR(kIOPlatformSerialNumberKey), kCFAllocatorDefault, 0);
+        IOObjectRelease(platformExpert);
+        if (serialNumberAsCFString) {
+            NSString *serialNumber = (__bridge_transfer NSString *)serialNumberAsCFString;
+            return serialNumber;
+        }
+    }
+    return nil;
+}
+
+#endif
 
 + (NSString *)dealStringWithRegExp:(NSString *)string {
     NSRegularExpression *regExp = [[NSRegularExpression alloc]initWithPattern:@"[0-9AXYHJKLMW]" options:NSRegularExpressionCaseInsensitive error:nil];
@@ -199,7 +238,6 @@
     return [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"];
 }
 
-#if TARGET_OS_IOS
 + (BOOL)isSimulator {
     BOOL result = NO;
 #if TARGET_IPHONE_SIMULATOR
@@ -211,6 +249,8 @@
 #endif
     return result;
 }
+
+#if TARGET_OS_IOS
 
 + (NSNumber *)fps {
     static TDCoreFPSMonitor *fpsMonitor = nil;
@@ -245,7 +285,7 @@
  ============================================================================================================
  */
 + (NSString *)deviceModel {
-#if TARGET_OS_IOS
+#if (TARGET_OS_IOS || TARGET_OS_WATCH || TARGET_OS_VISION || TARGET_OS_TV)
     struct utsname systemInfo;
     uname(&systemInfo);
     NSString *platform = [NSString stringWithCString:systemInfo.machine encoding:NSASCIIStringEncoding];
@@ -308,19 +348,28 @@
 + (NSString *)os {
 #if TARGET_OS_IOS
     return @"iOS";
+#elif TARGET_OS_WATCH
+    return [WKInterfaceDevice currentDevice].systemName;
+#elif TARGET_OS_TV
+    return @"tvOS";
+#elif TARGET_OS_VISION
+    return [UIDevice currentDevice].systemName;
 #elif TARGET_OS_OSX
     return @"OSX";
 #endif
 }
 
 + (NSString *)osVersion {
-#if TARGET_OS_IOS
+#if TARGET_OS_IOS || TARGET_OS_VISION || TARGET_OS_TV
     return [[UIDevice currentDevice] systemVersion];
+#elif TARGET_OS_WATCH
+    return [WKInterfaceDevice currentDevice].systemVersion;
 #elif TARGET_OS_OSX
     NSDictionary *sv = [NSDictionary dictionaryWithContentsOfFile:@"/System/Library/CoreServices/SystemVersion.plist"];
     NSString *versionString = [sv objectForKey:@"ProductVersion"];
     return versionString;
 #endif
+    return @"";
 }
 
 + (NSString *)deviceType {
@@ -355,7 +404,14 @@
     return typeName;
 #elif TARGET_OS_OSX
     return @"Mac";
+#elif TARGET_OS_WATCH
+    return @"AppleWatch";
+#elif TARGET_OS_VISION
+    return @"VisionPro";
+#elif TARGET_OS_TV
+    return @"AppleTV";
 #endif
+    return @"";
 }
 
 @end

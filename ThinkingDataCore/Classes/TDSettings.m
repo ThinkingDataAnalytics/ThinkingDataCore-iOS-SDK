@@ -8,21 +8,6 @@
 #import "TDSettings.h"
 #import "NSObject+TDCore.h"
 
-@implementation TDTemplate
-
-- (instancetype)initWithDictionary:(NSDictionary *)dict {
-    if (self = [self init]) {
-        self.templateCode = [dict[@"templateCode"] td_string];
-        NSDictionary *customFetchParams = [dict[@"customFetchParams"] td_filterNull];
-        if ([customFetchParams isKindOfClass:NSDictionary.class]) {
-            self.customFetchParams = customFetchParams;
-        }
-    }
-    return self;
-}
-
-@end
-
 @implementation TDSettings
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict {
@@ -40,17 +25,10 @@
         self.encryptVersion = [dict[@"encryptVersion"] td_number].integerValue;
         self.mode = [dict[@"mode"] td_number].integerValue;
         
-        NSMutableArray<TDTemplate *> *templateObjectArray = [NSMutableArray array];
-        NSArray *templates = [dict[@"templates"] td_filterNull];
-        if ([templates isKindOfClass:NSArray.class]) {
-            for (NSDictionary *templateDict in templates) {
-                if ([templateDict isKindOfClass:NSDictionary.class]) {
-                    TDTemplate *templateObj = [[TDTemplate alloc] initWithDictionary:templateDict];
-                    [templateObjectArray addObject:templateObj];
-                }
-            }
+        NSDictionary *rccFetchParams = dict[@"rccFetchParams"];
+        if ([rccFetchParams isKindOfClass:NSDictionary.class]) {
+            self.rccFetchParams = rccFetchParams;
         }
-        self.templates = templateObjectArray;
     }
     return self;
 }
