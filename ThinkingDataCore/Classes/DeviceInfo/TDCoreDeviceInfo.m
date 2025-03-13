@@ -23,7 +23,6 @@
 #import "TDNetworkReachability.h"
 #import "TDCoreFPSMonitor.h"
 #endif
-#import "TDUserDefaults.h"
 
 @implementation TDCoreDeviceInfo
 
@@ -76,12 +75,12 @@
         NSString *keyDeviceId = @"thinking_data_device_id";
         deviceId = [TDCoreKeychainHelper readDeviceId];
         if (!([deviceId isKindOfClass:NSString.class] && deviceId.length > 0)) {
-            deviceId = [[TDUserDefaults standardUserDefaults] stringForKey:keyDeviceId];
+            deviceId = [[NSUserDefaults standardUserDefaults] stringForKey:keyDeviceId];
         }
         if (!deviceId) {
             deviceId = [self defaultIdentifier];
         }
-        [[TDUserDefaults standardUserDefaults] setObject:deviceId forKey:keyDeviceId];
+        [[NSUserDefaults standardUserDefaults] setObject:deviceId forKey:keyDeviceId];
         [TDCoreKeychainHelper saveDeviceId:deviceId];
     }
     return deviceId;
@@ -124,13 +123,13 @@
 
 + (NSString *)deviceId {
     NSString *keyDeviceId = @"thinking_data_device_id";
-    NSString *deviceId = [[TDUserDefaults standardUserDefaults] stringForKey:keyDeviceId];
+    NSString *deviceId = [[NSUserDefaults standardUserDefaults] stringForKey:keyDeviceId];
     if (!deviceId) {
         deviceId = [self getSystemSerialNumber];
         if (deviceId == nil) {
             deviceId = [[NSUUID UUID] UUIDString];
         }
-        [[TDUserDefaults standardUserDefaults] setObject:deviceId forKey:keyDeviceId];
+        [[NSUserDefaults standardUserDefaults] setObject:deviceId forKey:keyDeviceId];
     }
     return deviceId;
 }
@@ -165,15 +164,15 @@
     return [NSDate date];
 }
 
+#define TD_PM_UNIT_KB 1024.0
+#define TD_PM_UNIT_MB (1024.0 * TD_PM_UNIT_KB)
+#define TD_PM_UNIT_GB (1024.0 * TD_PM_UNIT_MB)
 + (NSString *)ram {
-    NSUInteger ramUnitGB = 1024 * 1024 * 1024;
-    NSString *ram = [NSString stringWithFormat:@"%.1f/%.1f", [self td_pm_func_getFreeMemory]*1.0/ramUnitGB, [self td_pm_func_getRamSize]*1.0/ramUnitGB];
+    NSString *ram = [NSString stringWithFormat:@"%.1f/%.1f", [self td_pm_func_getFreeMemory]*1.0/TD_PM_UNIT_GB, [self td_pm_func_getRamSize]*1.0/TD_PM_UNIT_GB];
     return ram;
 }
-
 + (NSString *)disk {
-    NSUInteger diskUnitGB = 1000 * 1000 * 1000;
-    NSString *disk = [NSString stringWithFormat:@"%.1f/%.1f", [self td_get_disk_free_size]*1.0/diskUnitGB, [self td_get_storage_size]*1.0/diskUnitGB];
+    NSString *disk = [NSString stringWithFormat:@"%.1f/%.1f", [self td_get_disk_free_size]*1.0/TD_PM_UNIT_GB, [self td_get_storage_size]*1.0/TD_PM_UNIT_GB];
     return disk;
 }
 

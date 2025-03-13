@@ -1,1 +1,0 @@
-../../ThinkingDataCore/Classes/Category/NSObject/NSObject+TDCore.h

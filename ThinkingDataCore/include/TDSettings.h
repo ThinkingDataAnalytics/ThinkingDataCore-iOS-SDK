@@ -1,1 +1,0 @@
-../../ThinkingDataCore/Classes/TDSettings.h

@@ -1,1 +1,0 @@
-../../ThinkingDataCore/Classes/TDRuntime/TDClassHelper.h

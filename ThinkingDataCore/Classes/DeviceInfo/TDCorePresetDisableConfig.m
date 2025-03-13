@@ -28,6 +28,8 @@ static BOOL _td_disableBundleId;
 static BOOL _td_disableOs;
 static BOOL _td_disableInstallTime;
 static BOOL _td_disableDeviceType;
+static BOOL _td_disableSessionID;
+static BOOL _td_disableCalibratedTime;
 
 static BOOL _td_disableNetworkType;
 static BOOL _td_disableZoneOffset;
@@ -67,6 +69,8 @@ static const NSString *kTDPresentOs  = @"#os";
 static const NSString *kTDPresentBundleId  = @"#bundle_id";
 static const NSString *kTDPresentInstallTime  = @"#install_time";
 static const NSString *kTDPresentDeviceType = @"#device_type";
+static const NSString *kTDPresentSessionID  = @"#session_id";
+static const NSString *kTDPresentCalibratedTime = @"#time_calibration";
 
 // - 只过滤字段
 static const NSString *kTDPresentNETWORKTYPE = @"#network_type";
@@ -102,9 +106,6 @@ static NSMutableArray *__td_disPresetProperties;
         NSArray *disPresetProperties = (NSArray *)[[[NSBundle mainBundle] infoDictionary] objectForKey:TD_MAIM_INFO_PLIST_DISPRESTPRO_KEY];
 
         if (disPresetProperties && disPresetProperties.count) {
-            // If a configuration file is set, we will use the values in the configuration file. So the default value is restored to NO
-            _td_disableFPS = NO;
-            
             __td_disPresetProperties = [NSMutableArray arrayWithArray:disPresetProperties];
             
             if ([__td_disPresetProperties containsObject:kTDPresentZONEOFFSET]) {
@@ -132,6 +133,10 @@ static NSMutableArray *__td_disPresetProperties;
             _td_disableOs = [__td_disPresetProperties containsObject:kTDPresentOs];
             _td_disableInstallTime = [__td_disPresetProperties containsObject:kTDPresentInstallTime];
             _td_disableDeviceType = [__td_disPresetProperties containsObject:kTDPresentDeviceType];
+            //_td_disableSessionID = [__td_disPresetProperties containsObject:kTDPresentSessionID];
+            //_td_disableCalibratedTime = [__td_disPresetProperties containsObject:kTDPresentCalibratedTime];
+            _td_disableSessionID = YES;
+            _td_disableCalibratedTime = YES;
 
             _td_disableNetworkType = [__td_disPresetProperties containsObject:kTDPresentNETWORKTYPE];
             _td_disableZoneOffset = [__td_disPresetProperties containsObject:kTDPresentZONEOFFSET];
@@ -149,9 +154,6 @@ static NSMutableArray *__td_disPresetProperties;
             _td_disableUrl = [__td_disPresetProperties containsObject:kTDPresentURL];
             _td_disableReferrer = [__td_disPresetProperties containsObject:kTDPresentREFERRER];
             _td_disableOpsReceiptProperties = [__td_disPresetProperties containsObject:kTDPresentOpsReceiptProperties];
-        } else {
-            // If a configuration file is not set. default value is YES
-            _td_disableFPS = YES;
         }
     });
     return __td_disPresetProperties;
@@ -180,6 +182,9 @@ static NSMutableArray *__td_disPresetProperties;
 + (BOOL)disableSimulator {
     return _td_disableSimulator;
 }
+
+
+
 
 + (BOOL)disableAppVersion {
     return _td_disableAppVersion;
@@ -299,6 +304,14 @@ static NSMutableArray *__td_disPresetProperties;
 
 + (BOOL)disableReferrer {
     return _td_disableReferrer;
+}
+
++ (BOOL)disableSessionID {
+    return _td_disableSessionID;
+}
+
++ (BOOL)disableCalibratedTime {
+    return _td_disableCalibratedTime;
 }
 
 @end

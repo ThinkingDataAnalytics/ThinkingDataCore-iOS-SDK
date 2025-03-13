@@ -11,7 +11,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSDictionary (TDCore)
 
-- (NSDictionary *)deepCopy;
 
 @end
 
