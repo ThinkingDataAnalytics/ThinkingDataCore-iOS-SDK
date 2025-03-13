@@ -14,6 +14,7 @@ NSString * const kTDMediatorTargetRemoteConfigActionNativeGetClientUserId = @"na
 NSString * const kTDMediatorTargetRemoteConfigActionNativeGetApplyValue = @"nativeGetApplyValueWithParams";
 NSString * const kTDMediatorTargetRemoteConfigActionNativeGetSystemConfig = @"nativeGetSystemConfigWithParams";
 NSString * const kTDMediatorTargetRemoteConfigActionNativeIsSDKClose = @"nativeIsSDKCloseWithParams";
+NSString * const kTDMediatorTargetRemoteConfigActionNativeFetchTemplateInfo = @"nativeFetchTemplateInfoWithParams";
 
 @implementation TDMediator (RemoteConfig)
 
@@ -68,6 +69,17 @@ NSString * const kTDMediatorTargetRemoteConfigActionNativeIsSDKClose = @"nativeI
     }
     NSNumber *value = [[TDMediator sharedInstance] performTarget:kTDMediatorTargetRemoteConfig action:kTDMediatorTargetRemoteConfigActionNativeIsSDKClose params:params shouldCacheTarget:NO];
     return value.boolValue;
+}
+
+- (void)tdRemoteConfigFetchTemplateWithAppId:(NSString *)appId templateCode:(NSString *)code {
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    if (appId.length) {
+        params[@"appId"] = appId;
+    }
+    if (code.length) {
+        params[@"templateCode"] = code;
+    }
+    [[TDMediator sharedInstance] performTarget:kTDMediatorTargetRemoteConfig action:kTDMediatorTargetRemoteConfigActionNativeFetchTemplateInfo params:params shouldCacheTarget:NO];
 }
 
 @end

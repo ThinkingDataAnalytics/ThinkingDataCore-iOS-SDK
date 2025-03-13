@@ -18,6 +18,7 @@ NSString * const kTDMediatorTargetAnalyticsActionNativeUserSet = @"nativeUserSet
 NSString * const kTDMediatorTargetAnalyticsActionNativeTrackDebugEvent = @"nativeTrackDebugEventWithParams";
 NSString * const kTDMediatorTargetAnalyticsActionNativeGetEnableAutoPush = @"nativeGetEnableAutoPushWithParams";
 NSString * const kTDMediatorTargetAnalyticsActionNativeGetAllAppIds = @"nativeGetAllAppIdsWithParams";
+NSString * const kTDMediatorTargetAnalyticsActionNativeGetSDKVersion = @"nativeGetSDKVersionWithParams";
 
 @implementation TDMediator (Analytics)
 
@@ -107,6 +108,11 @@ NSString * const kTDMediatorTargetAnalyticsActionNativeGetAllAppIds = @"nativeGe
 - (NSArray<NSString *> *)tdAnalyticsGetAllAppIds {
     NSArray *appIds = [[TDMediator sharedInstance] performTarget:kTDMediatorTargetAnalytics action:kTDMediatorTargetAnalyticsActionNativeGetAllAppIds params:nil shouldCacheTarget:NO];
     return appIds;
+}
+
+- (nullable NSString *)tdAnalyticsGetSDKVersion {
+    NSString *version = [[TDMediator sharedInstance] performTarget:kTDMediatorTargetAnalytics action:kTDMediatorTargetAnalyticsActionNativeGetSDKVersion params:nil shouldCacheTarget:NO];
+    return version;
 }
 
 @end

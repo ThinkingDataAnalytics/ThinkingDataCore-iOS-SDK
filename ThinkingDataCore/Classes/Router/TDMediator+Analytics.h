@@ -41,6 +41,8 @@ extern NSString * const kTDMediatorTargetAnalytics;
 
 - (NSArray<NSString *> *)tdAnalyticsGetAllAppIds;
 
+- (nullable NSString *)tdAnalyticsGetSDKVersion;
+
 @end
 
 NS_ASSUME_NONNULL_END

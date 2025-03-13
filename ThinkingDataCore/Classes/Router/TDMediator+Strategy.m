@@ -10,6 +10,7 @@
 NSString * const kTDMediatorTargetStrategy = @"Strategy";
 
 NSString * const kTDMediatorTargetStrategyActionNativeInit = @"nativeInitWithParams";
+NSString * const kTDMediatorTargetStrategyActionNativeGetSDKVersion = @"nativeGetSDKVersionWithParams";
 
 @implementation TDMediator (Strategy)
 
@@ -19,6 +20,14 @@ NSString * const kTDMediatorTargetStrategyActionNativeInit = @"nativeInitWithPar
         params[@"settings"] = settings;
     }
     [[TDMediator sharedInstance] performTarget:kTDMediatorTargetStrategy action:kTDMediatorTargetStrategyActionNativeInit params:params shouldCacheTarget:NO];
+}
+
+- (NSString *)tdStrategyGetSDKVersion {
+    NSString *version = [[TDMediator sharedInstance] performTarget:kTDMediatorTargetStrategy action:kTDMediatorTargetStrategyActionNativeGetSDKVersion params:nil shouldCacheTarget:NO];
+    if ([version isKindOfClass:NSString.class]) {
+        return version;
+    }
+    return nil;
 }
 
 @end

@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ThinkingDataCore'
-  s.version          = '1.2.0'
+  s.version          = '1.3.0'
   s.summary          = 'A short description of ThinkingDataCore.'
 
 # This description is used to generate tags and improve search results.
@@ -30,7 +30,6 @@ TODO: Add long description of the pod here.
   s.requires_arc     = true
 
   s.default_subspec = 'Main'
-
   s.ios.deployment_target = '9.0'
   s.osx.deployment_target = '10.11'
   s.watchos.deployment_target = "6.0"
@@ -47,28 +46,28 @@ TODO: Add long description of the pod here.
     o.osx.deployment_target = '10.11'
     path = 'ThinkingDataCore/Classes'
     o.source_files = path + '/**/*'
-    o.exclude_files = path + '/DeviceInfo/TDCoreFPSMonitor.{h,m}', path + '/Network/TDNetworkReachability.{h,m}'
+    o.exclude_files = path + '/DeviceInfo/TDCoreFPSMonitor.{h,m}', path + '/Network/TDNetworkReachability.{h,m}', path + '/Store/TDStorageEncryptPlugin.{h,m}', path + '/Encrypt/*.{h,m}'
   end
 
   s.subspec 'watchOS' do |o|
     o.watchos.deployment_target = "6.0"
     path = 'ThinkingDataCore/Classes'
     o.source_files = path + '/**/*'
-    o.exclude_files = path + '/DeviceInfo/TDCoreFPSMonitor.{h,m}', path + '/Network/TDNetworkReachability.{h,m}'
+    o.exclude_files = path + '/DeviceInfo/TDCoreFPSMonitor.{h,m}', path + '/Network/TDNetworkReachability.{h,m}', path + '/Store/TDStorageEncryptPlugin.{h,m}', path + '/Encrypt/*.{h,m}'
   end
 
   s.subspec 'tvOS' do |o|
     o.tvos.deployment_target = "13.0"
     path = 'ThinkingDataCore/Classes'
     o.source_files = path + '/**/*'
-    o.exclude_files = path + '/DeviceInfo/TDCoreFPSMonitor.{h,m}', path + '/Network/TDNetworkReachability.{h,m}'
+    o.exclude_files = path + '/DeviceInfo/TDCoreFPSMonitor.{h,m}', path + '/Network/TDNetworkReachability.{h,m}', path + '/Store/TDStorageEncryptPlugin.{h,m}', path + '/Encrypt/*.{h,m}'
   end
 
   s.subspec 'versionOS' do |o|
     o.visionos.deployment_target = "1.0"
     path = 'ThinkingDataCore/Classes'
     o.source_files = path + '/**/*'
-    o.exclude_files = path + '/DeviceInfo/TDCoreFPSMonitor.{h,m}', path + '/Network/TDNetworkReachability.{h,m}'
+    o.exclude_files = path + '/DeviceInfo/TDCoreFPSMonitor.{h,m}', path + '/Network/TDNetworkReachability.{h,m}', path + '/Store/TDStorageEncryptPlugin.{h,m}', path + '/Encrypt/*.{h,m}'
   end
   
   s.subspec 'Main' do |m|

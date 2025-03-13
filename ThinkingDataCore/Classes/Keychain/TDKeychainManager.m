@@ -42,6 +42,32 @@ static NSString * const TDKeychainService = @"com.thinkingddata.analytics.servic
     }
 }
 
++ (void)oldSaveItem:(nonnull NSString *)value forKey:(nonnull NSString *)key {
+    if (!key || !value) {
+        return;
+    }
+    NSData *encodeData = [value dataUsingEncoding:NSUTF8StringEncoding];
+    @synchronized (self) {
+        NSString *originPassword = [self oldItemForKey:key];
+        if (originPassword.length > 0) {
+            NSMutableDictionary *updateAttributes = [NSMutableDictionary dictionary];
+            updateAttributes[(__bridge id)kSecValueData] = encodeData;
+            NSMutableDictionary *query = [self oldKeychainQueryWithAccount:key];
+            OSStatus statusCode = SecItemUpdate((__bridge CFDictionaryRef)query,(__bridge CFDictionaryRef)updateAttributes);
+            if (statusCode != noErr) {
+                [TDOSLog logMessage:@"Keychain Update Error" prefix:@"TDCore" type:TDLogTypeError asynchronous:NO];
+            }
+        } else {
+            NSMutableDictionary *attributes = [self oldKeychainQueryWithAccount:key];
+            attributes[(__bridge id)kSecValueData] = encodeData;
+            OSStatus statusCode = SecItemAdd((__bridge CFDictionaryRef)attributes, nil);
+            if (statusCode != noErr) {
+                [TDOSLog logMessage:@"Keychain Add Error" prefix:@"TDCore" type:TDLogTypeError asynchronous:NO];
+            }
+        }
+    }
+}
+
 + (nullable NSString *)itemForKey:(NSString *)key {
     if (!key) {
         return nil;

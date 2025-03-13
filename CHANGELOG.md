@@ -1,3 +1,10 @@
+### v1.3.0
+**Date:** 2025/03/13
+
+**Notes:**
+
+* Supports encryption of local data
+
 ### v1.2.0
 **Date:** 2024/12/16
 

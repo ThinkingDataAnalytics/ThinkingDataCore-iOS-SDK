@@ -1,5 +1,5 @@
 #import "NSData+TDGzip.h"
-#import "zlib.h"
+#import <zlib.h>
 #import "TDCoreLog.h"
 
 @implementation NSData (TDGzip)

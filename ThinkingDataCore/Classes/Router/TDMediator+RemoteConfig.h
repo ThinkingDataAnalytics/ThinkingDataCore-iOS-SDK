@@ -31,6 +31,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (BOOL)tdRemoteConfigIsSDKCloseWithAppId:(nonnull NSString *)appId;
 
+- (void)tdRemoteConfigFetchTemplateWithAppId:(nonnull NSString *)appId templateCode:(nullable NSString *)code;
+
 @end
 
 

@@ -11,6 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TDKeychainManager : NSObject
 + (void)saveItem:(nonnull NSString *)value forKey:(nonnull NSString *)key;
++ (void)oldSaveItem:(nonnull NSString *)value forKey:(nonnull NSString *)key;
 + (nullable NSString *)itemForKey:(nonnull NSString *)key;
 + (BOOL)deleteItemWithKey:(nonnull NSString *)key;
 + (nullable NSString *)oldItemForKey:(NSString *)key;

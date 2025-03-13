@@ -15,6 +15,9 @@ static NSString * const kTDDeviceIDNew = @"com.thinkingddata.analytics.deviceid_
 
 + (void)saveDeviceId:(NSString *)string {
     [TDKeychainManager saveItem:string forKey:kTDDeviceIDNew];
+    
+    // Compatibility handles the case of jumping back and forth between old and new SDK versions
+    [TDKeychainManager oldSaveItem:string forKey:kTDDeviceIDOld];
 }
 
 + (NSString *)readDeviceId {
