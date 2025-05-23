@@ -1,3 +1,10 @@
+### v1.2.2
+**Date:** 2025/05/22
+
+**Notes:**
+
+* Fix the switch for automatically reporting push tokens
+
 ### v1.2.1
 **Date:** 2025/03/13
 
