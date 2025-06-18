@@ -1,10 +1,13 @@
 PODS:
-  - ThinkingDataCore (1.1.0):
-    - ThinkingDataCore/Main (= 1.1.0)
-  - ThinkingDataCore/iOS (1.1.0)
-  - ThinkingDataCore/Main (1.1.0):
+  - ThinkingDataCore (1.3.0):
+    - ThinkingDataCore/Main (= 1.3.0)
+  - ThinkingDataCore/iOS (1.3.0)
+  - ThinkingDataCore/Main (1.3.0):
     - ThinkingDataCore/iOS
     - ThinkingDataCore/OSX
+    - ThinkingDataCore/tvOS
+    - ThinkingDataCore/versionOS
+    - ThinkingDataCore/watchOS
 
 DEPENDENCIES:
   - ThinkingDataCore (from `../../`)
@@ -14,8 +17,8 @@ EXTERNAL SOURCES:
     :path: "../../"
 
 SPEC CHECKSUMS:
-  ThinkingDataCore: 95b17863c31f70c0db600a5019ffb70a76613e5f
+  ThinkingDataCore: 2aa78bbbcff03db1ee04ede3cb22a0ccd8a05f87
 
 PODFILE CHECKSUM: 67a3207ff516f6650981c7bec7032ebe53323d4b
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.16.2

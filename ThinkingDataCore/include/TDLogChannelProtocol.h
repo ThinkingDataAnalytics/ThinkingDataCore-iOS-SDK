@@ -1,0 +1,1 @@
+../../ThinkingDataCore/Classes/Log/TDLogChannelProtocol.h

@@ -1,16 +1,9 @@
-### v1.2.2
-**Date:** 2025/05/22
-
-**Notes:**
-
-* Fix the switch for automatically reporting push tokens
-
-### v1.2.1
+### v1.3.0
 **Date:** 2025/03/13
 
 **Notes:**
 
-* Improve SDK stability
+* Supports encryption of local data
 
 ### v1.2.0
 **Date:** 2024/12/16
