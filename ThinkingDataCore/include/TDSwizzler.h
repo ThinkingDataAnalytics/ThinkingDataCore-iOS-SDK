@@ -1,1 +1,0 @@
-../../ThinkingDataCore/Classes/TDRuntime/Swizzle/TDSwizzler.h

@@ -234,7 +234,7 @@
 				ORGANIZATIONNAME = "杨雄";
 				TargetAttributes = {
 					6003F589195388D20070C39A = {
-						DevelopmentTeam = TXK3J8QHU9;
+						DevelopmentTeam = SV8R54PUAN;
 					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
@@ -483,7 +483,7 @@
 			baseConfigurationReference = 4FD04E15D71D53D0B5541C06 /* Pods-ThinkingDataCore_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = TXK3J8QHU9;
+				DEVELOPMENT_TEAM = SV8R54PUAN;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ThinkingDataCore/ThinkingDataCore-Prefix.pch";
 				INFOPLIST_FILE = "ThinkingDataCore/ThinkingDataCore-Info.plist";
@@ -500,7 +500,7 @@
 			baseConfigurationReference = 8DA96993366AF52DD567A35F /* Pods-ThinkingDataCore_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = TXK3J8QHU9;
+				DEVELOPMENT_TEAM = SV8R54PUAN;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ThinkingDataCore/ThinkingDataCore-Prefix.pch";
 				INFOPLIST_FILE = "ThinkingDataCore/ThinkingDataCore-Info.plist";

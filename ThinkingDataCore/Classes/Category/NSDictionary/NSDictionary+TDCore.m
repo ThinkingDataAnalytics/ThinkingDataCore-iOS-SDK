@@ -9,9 +9,4 @@
 
 @implementation NSDictionary (TDCore)
 
-- (NSDictionary *)deepCopy {
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self];
-    return [NSKeyedUnarchiver unarchiveObjectWithData:data];
-}
-
 @end
