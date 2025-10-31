@@ -1,0 +1,1 @@
+../../ThinkingDataCore/Classes/ThinkingDataCore.h

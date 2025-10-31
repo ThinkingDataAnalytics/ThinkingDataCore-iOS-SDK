@@ -1,0 +1,1 @@
+../../ThinkingDataCore/Classes/Log/TDOSLog.h
