@@ -1,3 +1,10 @@
+### v1.3.4
+**Date:** 2026/07/13
+
+**Notes:**
+
+* Fix a crash where FPS collection operated CADisplayLink on a background thread
+
 ### v1.3.0
 **Date:** 2025/03/13
 
