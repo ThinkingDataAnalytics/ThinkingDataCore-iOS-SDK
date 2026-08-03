@@ -14,14 +14,16 @@ let package = Package(
             targets: ["ThinkingDataCore"])
     ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
         .target(
             name: "ThinkingDataCore",
             dependencies: [],
             path: "ThinkingDataCore",
-            resources: [.copy("Resources/PrivacyInfo.xcprivacy")]
+            resources: [.copy("Resources/PrivacyInfo.xcprivacy")],
+            // Keep quoted imports (`#import "Foo.h"`) working after nesting
+            // public headers under include/ThinkingDataCore/.
+            cSettings: [
+                .headerSearchPath("include/ThinkingDataCore")
+            ]
         )
     ]
 )
-

@@ -1,1 +1,0 @@
-../../ThinkingDataCore/Classes/Category/NSString/NSString+TDCore.h

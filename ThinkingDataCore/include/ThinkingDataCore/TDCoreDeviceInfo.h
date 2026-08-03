@@ -1,0 +1,1 @@
+../../Classes/DeviceInfo/TDCoreDeviceInfo.h

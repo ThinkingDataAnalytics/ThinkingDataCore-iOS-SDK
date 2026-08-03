@@ -1,3 +1,11 @@
+### v1.3.5
+**Date:** 2026/08/03
+
+**Notes:**
+
+* Fix SPM public header layout for `#import <ThinkingDataCore/Header.h>`
+* Fix umbrella header importing iOS-only encrypt/FPS/network headers on non-iOS platforms
+
 ### v1.3.4
 **Date:** 2026/07/13
 
