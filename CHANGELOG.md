@@ -1,3 +1,10 @@
+### v1.3.6
+**Date:** 2026/08/03
+
+**Notes:**
+
+* Update AES encryptor to use AES-GCM (aligned with Android SDK)
+
 ### v1.3.5
 **Date:** 2026/08/03
 
