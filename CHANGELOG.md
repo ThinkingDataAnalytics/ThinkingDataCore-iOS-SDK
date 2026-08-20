@@ -1,3 +1,10 @@
+### v1.3.7
+**Date:** 2026/08/20
+
+**Notes:**
+
+* Reimplement AES-GCM using only public CommonCrypto APIs (AES-CTR + hand-written GHASH) to remove non-public symbols (`CCCryptorGCMOneshotEncrypt`/`CCCryptorGCMOneshotDecrypt`/`CCCryptorGCM`) flagged by App Store review (ITMS-90338). Wire format is unchanged (IV || ciphertext || tag), byte compatible with the previous release and the Android SDK.
+
 ### v1.3.6
 **Date:** 2026/08/03
 
