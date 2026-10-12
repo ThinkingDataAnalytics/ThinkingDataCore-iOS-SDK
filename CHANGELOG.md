@@ -1,3 +1,10 @@
+### v1.3.8
+**Date:** 2026/10/12
+
+**Notes:**
+
+* Fix the `NSURL+TDCore.h` import casing in `TDApp.m` to avoid header lookup failures when building with Swift Package Manager on case-sensitive file systems.
+
 ### v1.3.7
 **Date:** 2026/08/20
 

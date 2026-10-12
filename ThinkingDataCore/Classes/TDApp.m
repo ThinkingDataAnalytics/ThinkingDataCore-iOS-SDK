@@ -13,7 +13,7 @@
 #import "TDSettingsPrivate.h"
 #import "TDCoreLog.h"
 #import "NSString+TDCore.h"
-#import "NSUrl+TDCore.h"
+#import "NSURL+TDCore.h"
 
 @implementation TDApp
 
